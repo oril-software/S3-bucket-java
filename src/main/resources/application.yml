@@ -1,0 +1,5 @@
+amazonProperties:
+  endpointUrl: https://s3.us-west-2.amazonaws.com
+  accessKey: XXXXXXXXXXXXXXXXXX
+  secretKey: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  bucketName: your-bucket-name
