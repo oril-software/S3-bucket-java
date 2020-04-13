@@ -9,7 +9,6 @@ retrieving, downloading and deleting files.
 ### Configuration
 To use this code sample you need to change the following configuration properties in **__application.yml__** file according to your S3 bucket credentials:
 
-* endpointUrl
 * accessKey
 * secretKey
 * bucketName

@@ -27,8 +27,6 @@ public class AmazonClient {
 
 	private AmazonS3 s3client;
 
-	@Value("${amazonProperties.endpointUrl}")
-	private String endpointUrl;
 	@Value("${amazonProperties.bucketName}")
 	private String bucketName;
 	@Value("${amazonProperties.accessKey}")
