@@ -2,7 +2,7 @@ package com.example.s3.controllers;
 
 import com.example.s3.dto.FileDTO;
 import com.example.s3.dto.SavedFileDTO;
-import com.example.s3.services.FileManagerServiceImpl;
+import com.example.s3.services.FileManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class FileController {
 
-	private FileManagerServiceImpl fileManager;
+	private FileManagerService fileManager;
 
 	@Autowired
-	FileController(FileManagerServiceImpl fileManager) {
+	FileController(FileManagerService fileManager) {
 		this.fileManager = fileManager;
 	}
 
@@ -44,7 +44,7 @@ public class FileController {
 	@DeleteMapping("/files/{fileName:.+}")
 	public ResponseEntity<Void> deleteFile(@PathVariable("fileName") String fileName) {
 		fileManager.deleteFile(fileName);
-		return ResponseEntity.ok().build();
+		return ResponseEntity.noContent().build();
 	}
 
 	private String getFileMediaType(String fileName) {
@@ -65,6 +65,5 @@ public class FileController {
 		}
 		return mediaType;
 	}
-
 
 }

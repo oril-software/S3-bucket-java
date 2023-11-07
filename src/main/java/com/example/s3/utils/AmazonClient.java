@@ -35,21 +35,20 @@ public class AmazonClient {
 	private String secretKey;
 
 	@PostConstruct
-	private void initializeAmazon() {
+	private void initializeAmazonClient() {
 		AWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
 		this.s3client = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(credentials))
-				.withRegion(Regions.US_EAST_2).build();
+				.withRegion(Regions.US_EAST_1).build();
 		createBucket();
 	}
 
 	public void uploadFileToBucket(String fileName, File file, String folderToUpload) {
 		logger.info("Uploading file {} to {}", fileName, folderToUpload);
-		String path = bucketName + "/" + folderToUpload;
-		s3client.putObject(new PutObjectRequest(path, fileName, file).withCannedAcl(CannedAccessControlList.PublicRead));
+		s3client.putObject(new PutObjectRequest(bucketName, folderToUpload + "/" + fileName, file));
 	}
 
 	public void deleteFileFromBucket(String filename, String folderName) {
-		System.out.println(folderName + "/" + filename);
+		logger.info("Deleting file {} from {}", filename, folderName);
 		DeleteObjectRequest delObjReq = new DeleteObjectRequest(bucketName, folderName + "/" + filename);
 		s3client.deleteObject(delObjReq);
 	}

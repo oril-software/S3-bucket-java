@@ -3,7 +3,7 @@ This repository is an example of how to use AWS S3 Bucket for uploading,
 retrieving, downloading and deleting files.
 
 ### Prerequisites
-* Java 8+
+* Java 11+
 * Maven ^3.6.0
 * AWS Account
 * [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) on AWS account
